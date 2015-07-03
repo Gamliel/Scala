@@ -82,4 +82,15 @@ class functionTests extends FlatSpec with GeneratorDrivenPropertyChecks{
     val result = Hi.getFoldedLeftResult(1, 5, (a1:Int, a2:Int) => a1 * a2,1)
     assert ( result == 120)
   }
+  
+  "Fold Left" should "apply a subtraction" in {
+    val result = Hi.getFoldedLeftResult(1, 3, (a1:Int, a2:Int) => a1 - a2,10)
+    assert ( result == 4)
+  }
+
+  "Fold Right" should "apply a subtraction" in {
+    val result = Hi.getFoldedRightResult(1, 3, (a1:Int, a2:Int) => a1 - a2,10)
+    assert ( result == -8)
+  }
+  
 }

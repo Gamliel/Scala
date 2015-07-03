@@ -58,4 +58,11 @@ object Hi {
   
       List.range(inf, sup + 1).foldLeft(z)(f)
     }
+
+    def getFoldedRightResult(inf:Int, sup:Int, f: ((Int,Int)=> Int), z:Int): Int = {
+      if (sup < inf)
+        throw new IllegalArgumentException("Sup must be >= Inf")
+  
+      List.range(inf, sup + 1).foldRight(z)(f)
+    }
 }
