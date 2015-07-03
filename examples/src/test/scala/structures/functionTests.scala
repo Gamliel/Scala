@@ -40,4 +40,20 @@ class functionTests extends FlatSpec with GeneratorDrivenPropertyChecks{
       assert ( Hi.getListSimple(0, n).length == n + 1)
     }
   }
+  
+  "Method" should "apply a function for each element" in {
+    forAll(upperBound) { (n:Int) =>
+      val resultingList = Hi.getMappedList(0, n, e => e * 2, List.empty)
+      assert ( resultingList.length == n + 1)
+      assert ( resultingList.forall(_ % 2 == 0))
+    }
+  }
+
+  "Method" should "apply a different function for each element" in {
+    forAll(upperBound) { (n:Int) =>
+      val resultingList = Hi.getMappedList(0, n, e => e * 2 + 1, List.empty)
+      assert ( resultingList.length == n + 1)
+      assert ( resultingList.forall(_ % 2 == 1))
+    }
+  }
 }
