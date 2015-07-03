@@ -29,9 +29,15 @@ class functionTests extends FlatSpec with GeneratorDrivenPropertyChecks{
     assert ( elements.length  === 100000)
   }
   
-  "List function" should "generate valid ranges" in {
+  "List function" should "accept generated valid ranges" in {
     forAll(upperBound) { (n:Int) => 
-      assert ( Hi.getListOptimised(1, n, List.empty).length == n)
+      assert ( Hi.getListOptimised(0, n, List.empty).length == n + 1)
+    }
+  }
+  
+  "Range" should "generate a list" in {
+    forAll(upperBound) { (n:Int) =>
+      assert ( Hi.getListSimple(0, n).length == n + 1)
     }
   }
 }

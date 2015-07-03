@@ -9,7 +9,7 @@ object Hi {
     "Hi!"
   }
   
-  def getList(inf:Integer, sup:Integer): List[Integer] = {
+  def getList(inf:Int, sup:Int): List[Int] = {
     if (sup < inf)
       throw new IllegalArgumentException("Sup must be >= Inf")
 
@@ -19,7 +19,7 @@ object Hi {
     }
   }
 
-  def getListOptimised(inf:Integer, sup:Integer, curList:List[Integer]): List[Integer] = {
+  def getListOptimised(inf:Int, sup:Int, curList:List[Int]): List[Int] = {
     if (sup < inf)
       throw new IllegalArgumentException("Sup must be >= Inf")
 
@@ -27,5 +27,11 @@ object Hi {
     else {
       getListOptimised(inf+1, sup, inf::curList)
     }
+  }
+  
+  def getListSimple (inf:Int, sup:Int): List[Int] = {
+    if (sup < inf)
+      throw new IllegalArgumentException(s"$sup must be >= $inf")
+    List.range(inf, sup + 1)
   }
 }
