@@ -52,4 +52,10 @@ object Hi {
       List.range(inf, sup + 1).map { f }
     }
 
+    def getFoldedLeftResult[T] (inf:Int, sup:Int, f: ((T,Int)=> T), z:T): T = {
+      if (sup < inf)
+        throw new IllegalArgumentException("Sup must be >= Inf")
+  
+      List.range(inf, sup + 1).foldLeft(z)(f)
+    }
 }

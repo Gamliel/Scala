@@ -72,4 +72,14 @@ class functionTests extends FlatSpec with GeneratorDrivenPropertyChecks{
       assert ( resultingList.forall(_ % 2 == 1))
     }
   }
+
+  "Fold Left" should "apply a function for each element" in {
+    val result = Hi.getFoldedLeftResult(0, 4, (a1:Int, a2:Int) => a1 + a2,0)
+    assert ( result == 10)
+  }
+
+  "Fold Left" should "apply a different function for each element" in {
+    val result = Hi.getFoldedLeftResult(1, 5, (a1:Int, a2:Int) => a1 * a2,1)
+    assert ( result == 120)
+  }
 }
