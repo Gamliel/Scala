@@ -44,4 +44,12 @@ object Hi {
       getMappedList(inf+1, sup, f, f(inf)::curList)
     }
   }
+
+    def getSimplerMappedList[T] (inf:Int, sup:Int, f: ((Int)=> T)): List[T] = {
+      if (sup < inf)
+        throw new IllegalArgumentException("Sup must be >= Inf")
+  
+      List.range(inf, sup + 1).map { f }
+    }
+
 }
