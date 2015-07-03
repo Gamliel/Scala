@@ -1,10 +1,14 @@
 package structures
 import org.scalatest.FlatSpec
+import org.scalatest.prop.GeneratorDrivenPropertyChecks
+import org.scalacheck.Gen
 
 /**
  * @author devtopic
  */
-class functionTests extends FlatSpec{
+class functionTests extends FlatSpec with GeneratorDrivenPropertyChecks{
+  
+  val upperBound = for (n <- Gen.choose(1, 100)) yield n * 10000  
   
   "A function" should "return 'Hi!'" in {
     assert( Hi.getGreetings() === "Hi!")
@@ -23,5 +27,11 @@ class functionTests extends FlatSpec{
   "An Optimised list function" should "generate 100000 elements" in{
     val elements = Hi.getListOptimised(1,100000,List.empty)
     assert ( elements.length  === 100000)
+  }
+  
+  "List function" should "generate valid ranges" in {
+    forAll(upperBound) { (n:Int) => 
+      assert ( Hi.getListOptimised(1, n, List.empty).length == n)
+    }
   }
 }
